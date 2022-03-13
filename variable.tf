@@ -2,6 +2,8 @@ variable "region" {
   default = "ap-northeast-1"
 }
 
+variable "terraform_profile" {}
+
 # rds
 variable "db_username" {}
 variable "db_password" {}

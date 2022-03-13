@@ -1,6 +1,6 @@
 provider "aws" {
   region = "${var.region}"
-  profile = "terraform-0306"
+  profile = "${var.terraform_profile}"
 }
 
 resource "aws_vpc" "main" {
@@ -159,6 +159,8 @@ resource "aws_db_instance" "default" {
   backup_retention_period = 0
   vpc_security_group_ids = ["${aws_security_group.db.id}"]
   db_subnet_group_name = "${aws_db_subnet_group.main.name}"
+  skip_final_snapshot = true
+  apply_immediately = true
 }
 
 resource "aws_instance" "web" {
