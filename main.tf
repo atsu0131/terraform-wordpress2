@@ -176,7 +176,7 @@ resource "aws_instance" "web" {
     destination = "/home/ec2-user/prepareWordPress.sql"
     connection {
       user = "ec2-user"
-      private_key = "${var.ssh_key_file}"
+      private_key = file("${var.ssh_key_file}")
       host = self.public_ip
     }
   }
@@ -198,7 +198,7 @@ resource "aws_instance" "web" {
     ]
     connection {
       user = "ec2-user"
-      private_key = "${var.ssh_key_file}"
+      private_key = file("${var.ssh_key_file}")
       host = self.public_ip
     }
   }
